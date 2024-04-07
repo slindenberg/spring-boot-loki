@@ -58,6 +58,8 @@ services:
   prometheus:
     container_name: prometheus-1
     image: prom/prometheus:latest
+    ports:
+      - "10002:9090"
     volumes:
       - prometheus:/prometheus
     environment:
