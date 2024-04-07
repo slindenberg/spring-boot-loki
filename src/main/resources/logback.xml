@@ -13,6 +13,8 @@
 
 	<if condition='isDefined("JSON_LOGS_ENABLED")'>
 		<then>
+
+			<!-- JSON CONFIG -->
 			<appender name="STDOUT_JSON" class="ch.qos.logback.core.ConsoleAppender">
 				<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
 					<layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
@@ -28,8 +30,11 @@
 			<root level="INFO">
 				<appender-ref ref="STDOUT_JSON"/>
 			</root>
+
 		</then>
 		<else>
+
+			<!-- DEFAULT CONFIG -->
 			<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 				<encoder>
 					<pattern>${CONSOLE_LOG_PATTERN}</pattern>
@@ -39,6 +44,7 @@
 			<root level="INFO">
 				<appender-ref ref="STDOUT"/>
 			</root>
+
 		</else>
 	</if>
 </configuration>

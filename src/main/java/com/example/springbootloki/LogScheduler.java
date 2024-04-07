@@ -11,7 +11,6 @@ import java.util.Random;
 public class LogScheduler {
 
 	private static final Random random = new Random();
-
 	private final Throwable exception = new Throwable("Sample Exception!", new Throwable("Sample Cause!"));
 
 	public enum Levels {
@@ -24,7 +23,6 @@ public class LogScheduler {
 
 	@Scheduled(fixedDelay = 2000)
 	public void createLogs() {
-
 		switch (Levels.getByRandom()) {
 			case Levels.TRACE -> log.trace("Sample trace log ...");
 			case Levels.DEBUG -> log.debug("Sample debug log ...");
