@@ -1,0 +1,11 @@
+apiVersion: 1
+datasources:
+  - name: Tempo-1
+    type: tempo
+    access: proxy
+    orgId: 1
+    url: http://grafana-tempo-1:3200
+    basicAuth: false
+    isDefault: false
+    version: 1
+    editable: true

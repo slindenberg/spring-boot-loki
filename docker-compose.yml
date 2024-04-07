@@ -2,14 +2,68 @@ version: "3.9"
 name: spring-boot-loki
 ### SERVICES ###
 services:
+  postgres:
+    container_name: postgres-1
+    image: postgres:latest
+    ports:
+      - "10001:5432"
+    volumes:
+      - ./docker/postgres/init-ddl.sql:/docker-entrypoint-initdb.d/init-ddl.sql
+      - postgres:/var/lib/postgresql/data
+    environment:
+      - TZ
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
   grafana:
+    container_name: grafana-1
     image: grafana/grafana:latest
+    links:
+      - grafana-loki
+      - grafana-promtail
+      - prometheus
+    ports:
+      - "10000:3000"
+    volumes:
+      - ./docker/grafana/grafana.ini:/etc/grafana/grafana.ini
+      - ./docker/grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - TZ
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
   grafana-loki:
+    container_name: grafana-loki-1
     image: grafana/loki:latest
+    environment:
+      - TZ
+  grafana-tempo:
+    container_name: grafana-tempo-1
+    image: grafana/tempo:latest
+    command: [ "-config.file=/etc/tempo.yaml" ]
+    volumes:
+      - ./docker/tempo/tempo.yaml:/etc/tempo.yaml
+      - grafana-tempo:/tmp/tempo
+    ports:
+      #- "14268"  # jaeger ingest
+      #- "3200"   # tempo
+      - "4317"  # otlp grpc
+      - "4318"  # otlp http
+      #- "9411"   # zipkin
+  grafana-promtail:
+    container_name: grafana-promtail-1
+    image: grafana/promtail:latest
+    volumes:
+      - ./docker/promtail/log:/var/log
+    command: -config.file=/etc/promtail/config.yml
   prometheus:
+    container_name: prometheus-1
     image: prom/prometheus:latest
     volumes:
       - prometheus:/prometheus
+    environment:
+      - TZ
 ### VOLUMES ###
 volumes:
   prometheus:
+  postgres:
+  grafana-tempo:

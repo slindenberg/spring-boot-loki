@@ -1,0 +1,17 @@
+<html lang="en">
+
+<head>
+    <title>MVC Example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Example database call:</h1>
+<table>
+    <tr data-th-each="entity : ${entities}">
+        <td data-th-text="${entity.id}">...</td>
+        <td data-th-text="${entity.data}">...</td>
+    </tr>
+</table>
+</body>
+
+</html>
