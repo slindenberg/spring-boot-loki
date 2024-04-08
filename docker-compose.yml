@@ -8,9 +8,10 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-        - "8080:8080"
+      - "8888:8080"
     environment:
-      JAVA_OPTS: "-Dspring.profiles.active=docker"
+      - TZ
+      - JAVA_OPTS=-Dspring.profiles.active=docker
     depends_on:
       postgres:
         condition: service_healthy
@@ -51,6 +52,8 @@ services:
   grafana-loki:
     container_name: grafana-loki-1
     image: grafana/loki:latest
+    ports:
+      - "10003:3100"
     environment:
       - TZ
   grafana-tempo:
@@ -66,12 +69,16 @@ services:
       - "4317"  # otlp grpc
       - "4318"  # otlp http
       #- "9411"   # zipkin
+    environment:
+      - TZ
   grafana-promtail:
     container_name: grafana-promtail-1
     image: grafana/promtail:latest
     volumes:
       - ./docker/promtail/log:/var/log
     command: -config.file=/etc/promtail/config.yml
+    environment:
+      - TZ
   prometheus:
     container_name: prometheus-1
     image: prom/prometheus:latest

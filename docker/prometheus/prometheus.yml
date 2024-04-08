@@ -13,8 +13,8 @@ alerting:
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
-  # - "first_rules.yml"
-  # - "second_rules.yml"
+# - "first_rules.yml"
+# - "second_rules.yml"
 
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
@@ -22,11 +22,11 @@ scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
   - job_name: "prometheus"
     static_configs:
-      - targets: ["localhost:9090"]
+      - targets: [ "localhost:9090" ]
   - job_name: "spring-boot-app"
     metrics_path: '/actuator/prometheus'
     #scrape_interval: 3s
     static_configs:
-      - targets: ["host.docker.internal:8080"]
+      - targets: [ "host.docker.internal:8888" ]
         labels:
           application: "spring-boot-app-1"
