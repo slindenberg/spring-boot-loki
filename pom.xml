@@ -37,45 +37,34 @@
 
 		<!-- DOCKER -->
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-docker-compose</artifactId>
-			<optional>true</optional>
-		</dependency>
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-docker-compose</artifactId>-->
+		<!--			<optional>true</optional>-->
+		<!--		</dependency>-->
 
 		<!-- TRACING -->
 
-		<!-- https://medium.com/@ahmadalammar/comprehensive-observability-in-spring-boot-using-opentelemetry-prometheus-grafana-tempo-and-4d50c2f2b711-->
 		<dependency>
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-tracing-bridge-otel</artifactId>
 			<version>1.2.4</version>
 		</dependency>
-		<dependency>
-			<groupId>io.opentelemetry</groupId>
-			<artifactId>opentelemetry-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.opentelemetry</groupId>
-			<artifactId>opentelemetry-exporter-otlp</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.opentelemetry</groupId>
-			<artifactId>opentelemetry-exporter-common</artifactId>
-		</dependency>
+		<!--?		<dependency>-->
+		<!--?			<groupId>io.opentelemetry</groupId>-->
+		<!--?			<artifactId>opentelemetry-api</artifactId>-->
+		<!--?		</dependency>-->
+		<!--?		<dependency>-->
+		<!--?			<groupId>io.opentelemetry</groupId>-->
+		<!--?			<artifactId>opentelemetry-exporter-otlp</artifactId>-->
+		<!--?		</dependency>-->
+		<!--?		<dependency>-->
+		<!--?			<groupId>io.opentelemetry</groupId>-->
+		<!--?			<artifactId>opentelemetry-exporter-common</artifactId>-->
+		<!--?		</dependency>-->
 
 		<!-- JSON LOGGING -->
 
-		<!--		<dependency>-->
-		<!--			<groupId>ch.qos.logback.contrib</groupId>-->
-		<!--			<artifactId>logback-json-classic</artifactId>-->
-		<!--			<version>0.1.5</version>-->
-		<!--		</dependency>-->
-		<!--		<dependency>-->
-		<!--			<groupId>ch.qos.logback.contrib</groupId>-->
-		<!--			<artifactId>logback-jackson</artifactId>-->
-		<!--			<version>0.1.5</version>-->
-		<!--		</dependency>-->
 		<dependency>
 			<groupId>org.codehaus.janino</groupId>
 			<artifactId>janino</artifactId>

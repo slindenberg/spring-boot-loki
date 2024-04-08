@@ -1,6 +1,7 @@
 package com.example.springbootloki.web;
 
 import com.example.springbootloki.dom.SomeService;
+import io.micrometer.tracing.SpanName;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 @Slf4j
 @RequiredArgsConstructor
+@SpanName("DefaultController")
 public class DefaultController {
 
 	private SomeService service;
@@ -22,6 +24,7 @@ public class DefaultController {
 		this.service = service;
 	}
 
+	@SpanName("index")
 	@GetMapping("/")
 	public ModelAndView index() {
 		log.info("Index page requested.");
