@@ -21,7 +21,7 @@ public class LogScheduler {
 		}
 	}
 
-	@Scheduled(fixedDelay = 2000)
+	@Scheduled(fixedDelay = 10000)
 	public void createLogs() {
 		switch (Levels.getByRandom()) {
 			case Levels.TRACE -> log.trace("Sample trace log ...");
