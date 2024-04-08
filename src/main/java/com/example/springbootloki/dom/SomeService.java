@@ -22,6 +22,13 @@ public class SomeService {
 
 	public List<SomeEntity> list() {
 		log.info("Listing data");
+
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+
+		}
+
 		return database.findAll();
 	}
 

@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @Slf4j
 @RequiredArgsConstructor
-@EnableScheduling
+//@EnableScheduling
 public class SpringBootLokiApplication implements ApplicationListener<ApplicationReadyEvent> {
 
 	private final SomeEntityRepository database;

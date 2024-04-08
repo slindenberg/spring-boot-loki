@@ -10,7 +10,7 @@ processors:
 
 exporters:
   prometheus:
-    endpoint: "prometheus-1:8889"
+    endpoint: "0.0.0.0:8889"
     const_labels:
       label1: spring
   otlp:
@@ -39,6 +39,6 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [otlp]  # name here should match the exporter name for tempo which is otlp
-#    logs:
-#      receivers: [otlp]
-#      exporters: [loki]
+    #logs:
+    #  receivers: [otlp]
+    #  exporters: [loki]

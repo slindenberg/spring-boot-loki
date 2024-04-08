@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+	<include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+	<include resource="org/springframework/boot/logging/logback/console-appender.xml" />
 	<conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
 	<conversionRule conversionWord="wex"
 					converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
@@ -43,7 +45,9 @@
 				</http>
 				<format>
 					<label>
-						<pattern>app=${name},host=${HOSTNAME},level=%level</pattern>
+						<!-- @formatter:off -->
+						<pattern>app=${name},host=${HOSTNAME},level=%level,traceId=%X{traceId:-},spanId=%X{spanId:-}</pattern>
+						<!-- @formatter:on -->
 						<readMarkers>true</readMarkers>
 					</label>
 					<message>
